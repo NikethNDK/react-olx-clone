@@ -1,38 +1,60 @@
 .loginParentDiv {
-    border: 1px solid black;
-    width: 350px;
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 6px;
-  }
-  
-  .loginParentDiv .input {
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    outline-color: transparent;
-  }
-  
-  .loginParentDiv button {
-    width: 100%;
-    height: 48px;
-    /* border-color: transparent; */
-    background-color: #002f34;
-    color: whitesmoke;
-    font-weight: 900;
-  }
-  .loginParentDiv button:hover {
-    background-color: white;
-    color: #002f34;
-    border: 2px solid #002f34;
-  }
-  
-  .loginParentDiv a {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
+  border: 1px solid #ddd; /* Subtle border for a clean look */
+  width: 350px;
+  padding: 20px; /* Increased padding for better spacing */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px; /* Softer rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+  background-color: #f9f9f9; /* Light background for a modern feel */
+}
+
+.loginParentDiv .input { 
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc; /* Visible borders for better input field clarity */
+  border-radius: 4px; /* Rounded input fields */
+  padding: 10px; /* Better padding for usability */
+  margin-bottom: 15px; /* Space between inputs */
+  font-size: 14px; /* Slightly larger text for readability */
+  outline: none;
+  transition: border-color 0.3s; /* Smooth focus transition */
+}
+
+.loginParentDiv .input:focus {
+  border-color: #002f34; /* Highlight border on focus */
+}
+
+.loginParentDiv button {
+  width: 100%;
+  height: 48px;
+  background-color: #002f34;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px; /* Softer button edges */
+  transition: all 0.3s ease-in-out; /* Smooth hover effect */
+  cursor: pointer;
+}
+
+.loginParentDiv button:hover {
+  background-color: #00474f; /* Slightly lighter shade on hover */
+  color: white;
+  transform: scale(1.02); /* Subtle zoom effect */
+}
+
+.loginParentDiv a {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  color: #007bff; /* Standard blue link color */
+  text-decoration: none;
+  font-size: 14px; /* Slightly smaller text */
+  margin-top: 10px;
+}
+
+.loginParentDiv a:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}

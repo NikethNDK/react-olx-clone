@@ -1,32 +1,45 @@
 .centerDiv {
-    border: 1px solid black;
+    border: 1px solid #ccc; /* Softer border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth */
     width: max-content;
-    padding: 50px;
+    padding: 40px; /* Slightly reduced padding for a cleaner look */
     position: absolute;
-    top: 65%;
-    left: 50%;
+    top: 50%; /* Centered vertically */
+    left: 50%; /* Centered horizontally */
     transform: translate(-50%, -50%);
-    border-radius: 6px;
-  }
-  .input {
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    outline-color: transparent;
-  }
-  
-  .uploadBtn {
-    margin-top: 30px;
+    border-radius: 10px; /* More rounded corners */
+    background-color: #f9f9f9; /* Light background color for better contrast */
+}
+
+.input {
+    border: none; /* Removes all borders */
+    border-bottom: 2px solid #ccc; /* Adds a focused bottom border */
+    padding: 10px; /* Adds some spacing for better usability */
+    outline: none;
+    width: 100%; /* Ensures the input takes the full width of its container */
+    transition: border-color 0.3s ease; /* Smooth hover effect */
+}
+
+.input:focus {
+    border-bottom: 2px solid #002f34; /* Highlighted border on focus */
+}
+
+.uploadBtn {
+    margin-top: 20px;
     width: 100%;
-    height: 48px;
-    /* border-color: transparent; */
-    background-color: #002f34;
-    color: whitesmoke;
-    font-weight: 900;
-  }
-  .uploadBtn:hover {
-    background-color: white;
-    color: #002f34;
-    border: 2px solid #002f34;
-  }
-  
+    height: 50px;
+    background-color: #006d77; /* A calming blue-green tone */
+    color: #fff;
+    font-weight: 600; /* Slightly lighter font weight for modern styling */
+    font-size: 16px; /* Larger text size for accessibility */
+    border: none; /* Removes border for a clean look */
+    border-radius: 6px; /* Matches the card's rounded corners */
+    transition: all 0.3s ease; /* Smooth hover transitions */
+}
+
+.uploadBtn:hover {
+    background-color: #fff;
+    color: #006d77;
+    border: 2px solid #006d77; /* Matches the hover state with subtle feedback */
+    cursor: pointer;
+}

@@ -45,7 +45,7 @@ import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { auth,db} from '../../firebase/config';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { collection, addDoc } from "firebase/firestore";
 
 export default function Signup() {
@@ -146,7 +146,7 @@ export default function Signup() {
           <br />
           <button>Signup</button>
         </form>
-        <a>Login</a>
+        <Link to="/login">Login</Link>
       </div>
     </div>
   );

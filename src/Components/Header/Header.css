@@ -1,8 +1,11 @@
+*{
+margin: 0;
+}
 .headerParentDiv {
-  padding: 10px;
+  padding: 7px;
   background-color: whitesmoke;
   position: fixed;
-  width: 100vw;
+  width: 99.4%;
   z-index: 999;
 }
 
@@ -162,3 +165,4 @@
     display: none;
   }
 }
+
