@@ -2,34 +2,38 @@ import React, { useEffect, useContext, useState } from "react";
 import Heart from "../../assets/Heart";
 import "./Post.css";
 import { FirebaseContext } from "../../store/FirebaseContext";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { PostContext } from "../../store/PostContext";
+import { useNavigate } from "react-router-dom";
 
 function Posts() {
   const { db, storage } = useContext(FirebaseContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userDetails, setUserDetails] = useState(null); 
+  const { setPostDetails } = useContext(PostContext);
+  const navigate = useNavigate();
 
+ 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
         const querySnapshot = await getDocs(collection(db, "products"));
         
-        // Fetch products and their image URLs
         const productsPromises = querySnapshot.docs.map(async (doc) => {
           const data = doc.data();
           let imageUrl = '';
           
-          // Only try to get URL if imageUrl exists in the document
           if (data.imageUrl) {
             try {
               const storageRef = ref(storage, data.imageUrl);
               imageUrl = await getDownloadURL(storageRef);
             } catch (imgError) {
               console.error("Error fetching image:", imgError);
-              imageUrl = ''; // Set default image or empty string
+              imageUrl = '';
             }
           }
 
@@ -53,9 +57,13 @@ function Posts() {
     fetchProducts();
   }, [db, storage]);
 
+  const handlePostClick = (product) => {
+    setPostDetails(product);
+    navigate('/view');
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -63,9 +71,9 @@ function Posts() {
           <span>Quick Menu</span>
           <span>View more</span>
         </div>
-        <div className="cards">
+        <div className="cards" >
           {products.map((product) => (
-            <div key={product.id} className="card">
+            <div key={product.id} className="card" onClick={() => handlePostClick(product)}>
               <div className="favorite">
                 <Heart />
               </div>
@@ -76,7 +84,7 @@ function Posts() {
                     alt={product.name}
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = 'path/to/fallback/image.jpg' // Add a fallback image
+                      e.target.src = 'path/to/fallback/image.jpg' 
                     }}
                   />
                 ) : (

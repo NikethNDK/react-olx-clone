@@ -39,6 +39,7 @@
   height: 270px;
   display: inline-block;
   cursor: pointer;
+
 }
 
 .card .favorite {
@@ -84,4 +85,25 @@
 .recommendations .heading span {
   font-size: 24px;
   color: #002f34;
+}
+.moreView .cards {
+  display: flex; /* Already applied */
+  flex-wrap: wrap; /* Allow wrapping to next line */
+  gap: 45px; /* Optional: add spacing between cards */
+  overflow: hidden; /* Prevent horizontal scrolling */
+}
+
+.card {
+  margin: 15px; /* Adjust margins for better spacing */
+  padding: 13px;
+  max-width: 222px;
+  width: 222px;
+  height: 270px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }

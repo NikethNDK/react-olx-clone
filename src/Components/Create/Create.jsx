@@ -26,7 +26,7 @@ const Create = () => {
 
     setLoading(true);
 
-    // Step 1: Upload image to Firebase Storage
+    //Upload image to Firebase Storage
     const storageRef = ref(storage, `images/${image.name}`);
     const uploadTask = uploadBytesResumable(storageRef, image);
 
@@ -43,11 +43,11 @@ const Create = () => {
         alert("Image upload failed. Please try again.");
       },
       async () => {
-        // Step 2: Get the download URL of the uploaded image
+        //Get the download URL of the uploaded image
         try {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref); // Corrected this line
 
-          // Step 3: Create a Firestore document with the image URL and other data
+          //Create a Firestore document with the image URL and other data
           const docRef = await addDoc(collection(db, "products"), {
             name,
             category,
@@ -57,7 +57,7 @@ const Create = () => {
             createdAt: new Date(),
           });
 
-          // Step 4: Update success message and reset form
+          //Update success message and reset form
           setSuccessMessage("Upload successful! Product has been added.");
           setName('');
           setCategory('');

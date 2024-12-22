@@ -1,38 +1,36 @@
-import React,{useEffect,useContext}  from 'react';
+import React, { useEffect, useContext } from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Signup from './Pages/Signup'
 import Home from './Pages/Home';
 import Login from './Pages/Login'
 import Create from './Pages/Create'
+import View from './Pages/ViewPost'
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
 import { auth } from './firebase/config';
+import Details from './store/PostContext'
 
 function App() {
-  const {user,setUser}=useContext(AuthContext)
-  const {firebase}=useContext(FirebaseContext)
-  useEffect(()=>{
-    auth.onAuthStateChanged((user)=>{
+  const { user, setUser } = useContext(AuthContext)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user)
     })
-    console.log(user)
-  })
+    return () => unsubscribe(); // Cleanup subscription
+  }, [setUser]); // Add setUser to dependency array
+
   return (
-    <>
-    <div>
+    <Details>
       <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/signup' element={<Signup />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/create' element={<Create />}></Route>
-        
+        <Route path='/' element={<Home />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/create' element={<Create />} />
+        <Route path='/view' element={<View />} />
       </Routes>
-      
-    
-    </div>
-    </>
+    </Details>
   );
-  
 }
 
 export default App;

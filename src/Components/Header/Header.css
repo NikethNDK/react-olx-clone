@@ -97,9 +97,6 @@ margin: 0;
   margin-right: 5px;
 }
 
-.language svg {
-}
-
 .span {
   text-decoration: none;
   font-size: 16px;
@@ -122,6 +119,7 @@ margin: 0;
 .sellMenu {
   position: relative;
   cursor: pointer;
+
 }
 
 .sellMenu .all {
@@ -149,6 +147,7 @@ margin: 0;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #002f34;
+  
 }
 
 /* .sellMenu .sellMenuContent svg {
@@ -164,5 +163,9 @@ margin: 0;
   .sellMenu {
     display: none;
   }
+}
+
+.logout-btn{
+  cursor: pointer;
 }
 
